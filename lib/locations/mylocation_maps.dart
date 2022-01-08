@@ -1,11 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MyLocation extends StatefulWidget {
   const MyLocation({Key? key}) : super(key: key);
+
+  final LatLng myubi =
+      const LatLng(-17.7335177, -63.1256928); //var to send through my api
 
   @override
   State<MyLocation> createState() => _MyLocationState();
@@ -13,6 +14,8 @@ class MyLocation extends StatefulWidget {
 
 class _MyLocationState extends State<MyLocation> {
   final Completer<GoogleMapController> _controller = Completer();
+  final Map<MarkerId, Marker> _markers = {};
+  Set<Marker> get markers => _markers.values.toSet();
 
 //Posicion inicial
   final CameraPosition _initialubication = const CameraPosition(
@@ -36,13 +39,15 @@ class _MyLocationState extends State<MyLocation> {
         myLocationButtonEnabled: true, //Hide the buttom witch contains my ub
         scrollGesturesEnabled: true, //Block/allow the Scrolled movement
         zoomGesturesEnabled: false, //Block the zoom
+        compassEnabled: true, //Gira el mapa
+
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheFicct,
-        label: const Text('Go to The Ficct!'),
+        label: const Text('Seguir trayectoria'),
         icon: const Icon(Icons.directions_boat),
       ),
     );

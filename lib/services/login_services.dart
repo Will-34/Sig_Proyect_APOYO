@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:sig_proyect/global_var.dart';
 import 'package:sig_proyect/models/login_register.dart';
 
 class LoginService {
@@ -12,9 +15,10 @@ class LoginService {
     );
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      // ignore: avoid_print
-
-      // ignore: avoid_print
+      var data = json.decode(response.body);
+      idusuario = data['id'];
+      nombreusuarioautentificado = data['nombre'];
+      tipousuario = data['tipo'];
       print(log);
       return true;
     } else {
