@@ -3,6 +3,8 @@ import 'package:sig_proyect/emergency_type_page.dart';
 import 'package:sig_proyect/locations/mylocation_maps.dart';
 import 'package:sig_proyect/login_page.dart';
 import 'package:sig_proyect/register_user_page.dart';
+import 'package:sig_proyect/ver_datos.dart';
+///import 'package:sig_proyect/ver_solicitudes.dart';
 
 void main() {
   runApp(const SigApp());
@@ -25,7 +27,9 @@ class SigApp extends StatelessWidget {
         '/emergency_type_page': (BuildContext context) =>
             const TipoEmergencia(),
         '/login_page': (BuildContext context) => const LoginPage(),
-        '/mylocation_maps': (BuildContext context) => const MyLocation()
+        '/mylocation_maps': (BuildContext context) => const MyLocation(),
+        '/ver_datos': (BuildContext context) => const VerDatos(), ///le puse const para que no esté subrayado de azul
+        //'/ver_solicitudes': (BuildContext context) =>  VerSolicitud(),            //está mal, no se como ponerlo
       },
     );
   }

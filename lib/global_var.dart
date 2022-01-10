@@ -6,3 +6,4 @@ String tipocliente = "cliente";
 String tipobombero = "bombero";
 String tipoambulancia = "ambulancia";
 String tipopolicia = "policia";
+String apoyo = "apoyo";

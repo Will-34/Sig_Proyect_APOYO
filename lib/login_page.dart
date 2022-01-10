@@ -139,35 +139,10 @@ class _LoginPageState extends State<LoginPage> {
           elevation: 10.0,
           color: Colors.greenAccent,
           onPressed: () async {
-            LoginUser loginUser = LoginUser(
-                app: controllerapp.text,
-                login: controllerUser.text,
-                password: controllerPass.text);
-            bool loginsuccess = await LoginService().loginregister(loginUser);
-            // ignore: avoid_print
-            //print(appusuario);
-
-            if (loginsuccess) {
-              //tipousuario = controllerapp.text;
-              if (tipocliente == tipousuario) {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/emergency_type_page', (Route<dynamic> route) => false);
-                //Navigator.pushReplacementNamed(context, '/cliente_page');
-
-              }
-            } else {
-              showDialog(
-                context: context,
-                barrierDismissible: true,
-                builder: (context) => const AlertDialog(
-                    title: Text('Re check your information||Empty Values'),
-                    content: Text('Back')
-
-                    //backgroundColor: Colors.redAccent,
-                    //shape: CircleBorder(),
-                    ),
-              );
-            }
+            
+              Navigator.pushReplacementNamed(context, '/ver_datos');
+              
+            
           });
     });
   }
